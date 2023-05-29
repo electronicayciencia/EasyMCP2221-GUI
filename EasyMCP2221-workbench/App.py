@@ -90,7 +90,7 @@ class App(tk.Tk):
 
 
     def main_window(self):
-        self.title("EasyMCP2221 utility v1.0 - Electronica y ciencia")
+        self.title("EasyMCP2221 Workbench - Electrónica y ciencia")
         #self.geometry("680x600")
 
         # Create 2x4 layout and frames
