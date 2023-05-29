@@ -1,2 +1,4 @@
-# EasyMCP2221-gui
-Graphic utility for EasyMCP2221 library.
+# EasyMCP2221 Workbench
+Graphical User Interface for EasyMCP2221 library.
+
+

@@ -35,8 +35,11 @@ class I2Cscan_window(tk.Toplevel):
         self.transient(root)
         self.grab_set()
 
+        self.label = ttk.Label(self, text="Trying address ...", anchor=tk.W)
+        self.label.pack(padx=10, pady=(10, 2), fill=tk.X)
+
         self.pb = ttk.Progressbar(self, orient="horizontal", length=250, mode="determinate")
-        self.pb.pack(padx=5, pady=5)
+        self.pb.pack(padx=10, pady=(2, 10))
 
         self.launch_scan()
 
@@ -45,7 +48,9 @@ class I2Cscan_window(tk.Toplevel):
 
 
     def update_pb(self, *args):
-        self.pb["value"] = self.addr.get() / 0x80 * 100
+        addr = self.addr.get()
+        self.pb["value"] = addr / 0x80 * 100
+        self.label["text"] = "Trying address 0x%02X..." % addr
 
 
     def launch_scan(self):

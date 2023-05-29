@@ -114,7 +114,7 @@ class App(tk.Tk):
         self.control_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=False, padx=5, pady=5)
 
         buttons_frame = ttk.Frame(topframe)
-        buttons_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=5, pady=5)
+        buttons_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=5, pady=(10, 5))
 
         # Populate buttons frame
         options = {
@@ -123,7 +123,7 @@ class App(tk.Tk):
             "ipadx": 20,
             "ipady": 5,
             "expand": True,
-            "fill": tk.X,
+            "fill": tk.BOTH,
         }
 
         tk.Button(buttons_frame, text="Quit",     command=self.quit_click).pack(**options)
