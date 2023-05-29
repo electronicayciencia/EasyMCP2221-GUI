@@ -75,7 +75,7 @@ class App(tk.Tk):
             ],
         }
 
-        self.iconbitmap(default=self.resource_path("icon-dvd.ico"))
+        self.iconbitmap(default=self.resource_path("./assets/icon.ico"))
 
         self.connect()
 
@@ -267,6 +267,6 @@ class App(tk.Tk):
         try:
             base_path = sys._MEIPASS
         except Exception:
-            base_path = os.path.abspath(".")
-
+            filepath = os.path.abspath(__file__)
+            base_path = os.path.dirname(filepath)
         return os.path.join(base_path, relative_path)
