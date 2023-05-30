@@ -11,15 +11,15 @@ class Func_GPIO_IN_frame(tk.Frame):
 
         self.value = sts["in"][pin]
 
-        self.status = tk.Label(self, relief="ridge", text="Unknown", bg="yellow2", anchor="center")
-        self.status.pack(fill=tk.X, ipady=10, pady=10, padx=10)
+        self.status = tk.Label(self, relief="flat", text="Unknown", bg="yellow2", anchor="center")
+        self.status.pack(fill=tk.X, ipady=15, pady=15, padx=10)
 
         self.value.trace("w", self.update_label)
 
 
     def update_label(self, *args):
         if self.value.get() == "1":
-            self.status.config(text="HIGH", bg="red2", fg="white")
+            self.status.config(text="HIGH", bg="red3", fg="white")
         else:
             self.status.config(text="LOW", bg="green", fg="white")
 
@@ -35,16 +35,17 @@ class Func_GPIO_OUT_frame(tk.Frame):
         self.status = sts["out"][pin]
         self.actual_status = sts["in"][pin]
 
-        self.t_button = tk.Button(self, text="Change", fg="white", activeforeground="white")
-        self.t_button.pack(fill=tk.X, ipady=10, pady=10, padx=20)
-
         self.m_button = tk.Button(self, text="Change", fg="white", activeforeground="white")
-        self.m_button.pack(fill=tk.X, ipady=5, pady=10, padx=20)
+        self.m_button.pack(fill=tk.X, ipady=10, pady=(10,2), padx=20)
+        ttk.Label(self, text="Push", anchor="c").pack(fill=tk.X, pady=(2,10), padx=20)
 
-        self.t_button.bind("<ButtonPress-1>", self.toggle)
+        self.t_button = tk.Button(self, relief="groove", text="Change", fg="white", activeforeground="white")
+        self.t_button.pack(fill=tk.X, ipady=2, pady=(10,2), padx=20)
+        ttk.Label(self, text="Toggle", anchor="c").pack(fill=tk.X, pady=(2,10), padx=20)
 
         self.m_button.bind("<ButtonPress-1>", self.toggle)
         self.m_button.bind("<ButtonRelease-1>", self.toggle)
+        self.t_button.bind("<ButtonPress-1>", self.toggle)
 
         self.actual_status.trace("w", self.update_buttons)
 
@@ -67,9 +68,9 @@ class Func_GPIO_OUT_frame(tk.Frame):
     def update_buttons(self, *args):
         # Toggle button
         if self.actual_status.get() == "1":
-            self.t_button.configure(relief="sunken", text="HIGH\nToggle to low", bg="red2", activebackground="red2")
+            self.t_button.configure(text="HIGH", bg="red2", activebackground="red2")
         else:
-            self.t_button.configure(relief="raised", text="LOW\nToggle to high", bg="green", activebackground="green")
+            self.t_button.configure(text="LOW", bg="green", activebackground="green")
 
         # Momentary button
         if self.actual_status.get() == "1":
@@ -386,18 +387,20 @@ class Func_IOC_frame(tk.Frame):
         # Interrupt detector frame
         self.status = tk.Button(int_frame,
                     text="Unknown",
-                    command=self.IOC_clear,
+                    relief="groove",
+#                    command=self.IOC_clear,
                     bg="yellow2",
                     anchor="center",  height=2)
 
         self.status.pack(fill=tk.X, ipady=10, pady=0, padx=10)
 
+        self.status.bind("<ButtonPress-1>", self.IOC_clear)
         self.int.trace("w", self.update_label)
 
 
     def update_label(self, *args):
         if self.int.get() == "1":
-            self.status.config(text="FIRED\n(push to clear)", bg="red2", fg="white")
+            self.status.config(text="Active\n(push to clear)", bg="red2", fg="white")
         else:
             self.status.config(text="waiting", bg="lightgrey", fg="black")
 
@@ -448,7 +451,7 @@ class Func_IOC_frame(tk.Frame):
         self.mcp.IOC_config(edge)
         logger.info(f'Set IOC to {edge}')
 
-    def IOC_clear(self):
+    def IOC_clear(self, *args):
         edge = self.edge.get()
         self.mcp.IOC_clear()
         logger.info("Clear IOC flag")
