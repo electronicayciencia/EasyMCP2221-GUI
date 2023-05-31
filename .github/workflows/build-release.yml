@@ -29,7 +29,7 @@ jobs:
     - name: Release with Notes
       uses: softprops/action-gh-release@v1
       with:
-        files: dist/windows/EasyMCP2221-workbench.exe
+        files: workbench/dist/windows/EasyMCP2221-workbench.exe
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
