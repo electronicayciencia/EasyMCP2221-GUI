@@ -24,12 +24,12 @@ jobs:
 #    - uses: actions/upload-artifact@v3
 #      with:
 #        name: EasyMCP2221-workbench
-#        path: src/dist/windows/EasyMCP2221-workbench.exe
+#        path: dist/windows/EasyMCP2221-workbench.exe
 
     - name: Release with Notes
       uses: softprops/action-gh-release@v1
       with:
-        files: src/dist/windows/EasyMCP2221-workbench.exe
+        files: dist/windows/EasyMCP2221-workbench.exe
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
