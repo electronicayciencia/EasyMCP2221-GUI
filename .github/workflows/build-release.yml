@@ -5,6 +5,7 @@ on:
     tags:
     - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 
+
 jobs:
   build:
 
@@ -14,27 +15,22 @@ jobs:
     - uses: actions/checkout@v3
       with:
         fetch-depth: 0
-    - name: Package Application Windows
+    - name: Package Application
       uses: JackMcKew/pyinstaller-action-windows@main
       with:
         path: workbench
         spec: EasyMCP2221-workbench.spec
 
-#    - name: Package Application Linux
-#      uses: JackMcKew/pyinstaller-action-linux@main
-#      with:
-#        path: workbench
-
 #    - uses: actions/upload-artifact@v3
 #      with:
 #        name: EasyMCP2221-workbench
 #        path: src/dist/windows/EasyMCP2221-workbench.exe
-#
 
-    - name: Release
+    - name: Release with Notes
       uses: softprops/action-gh-release@v1
       with:
-        files: 
-          - src/dist/windows/EasyMCP2221-workbench.exe
+        files: src/dist/windows/EasyMCP2221-workbench.exe
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+          
