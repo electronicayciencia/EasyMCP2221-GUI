@@ -75,7 +75,12 @@ class App(tk.Tk):
             ],
         }
 
-        self.iconbitmap(default=self.resource_path("./assets/icon.ico"))
+        if ( sys.platform.startswith('win')):
+            self.iconbitmap(default=self.resource_path("./assets/icon.ico"))
+        else:
+            logo = tk.PhotoImage(file=self.resource_path('./assets/icon.png'))
+            self.call('wm', 'iconphoto', self._w, logo)
+
 
         self.connect()
 
