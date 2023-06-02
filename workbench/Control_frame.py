@@ -20,11 +20,13 @@ class Control_frame(ttk.Labelframe):
 
         vref_values = ("OFF", "1.024V", "2.048V", "4.096V", "VDD", "VDD (3.3V)", "VDD (5V)")
 
-        ttk.Label(self,
-                  text="ADC reference:").grid(row=0, column=0, sticky=tk.W, pady=5, padx=10)
+        self.columnconfigure(1, minsize=120)
 
         ttk.Label(self,
-                  text="DAC reference:").grid(row=1, column=0, sticky=tk.W, pady=5, padx=10)
+                  text="ADC reference:").grid(row=0, column=0, sticky=tk.W, pady=5, padx=(10,2))
+
+        ttk.Label(self,
+                  text="DAC reference:").grid(row=1, column=0, sticky=tk.W, pady=5, padx=(10, 2))
 
         ttk.OptionMenu(self,
                        self.adc_vref,

@@ -101,7 +101,8 @@ class Func_ADC_frame(tk.Frame):
             fg="firebrick1",
             bg="gray10",
             anchor="center",
-            font=('Lucida Console', 16),
+            font=("", 16),
+            #font=('Lucida Console', 16),
         )
 
         self.label.pack(fill=tk.X, ipady=5, pady=10, padx=10)
@@ -181,7 +182,7 @@ class Func_DAC_frame(tk.Frame):
             fg="black",
             bg="yellow2",
             anchor="center",
-            font=('Lucida Console', 16),
+            font=("", 16),
         )
 
         self.label.pack(fill=tk.X, ipady=5, pady=10, padx=10)
@@ -262,8 +263,8 @@ class Func_CLK_OUT_frame(tk.Frame):
         freq_frame = tk.Frame(self)
         duty_frame = tk.Frame(self)
 
-        freq_frame.pack(pady=10)
         duty_frame.pack(pady=10)
+        freq_frame.pack(pady=10, fill=tk.X, padx=40)
 
 
         freqs = ("375kHz", "750kHz", "1.5MHz", "3MHz", "6MHz", "12MHz", "24MHz")
@@ -272,20 +273,7 @@ class Func_CLK_OUT_frame(tk.Frame):
         self.freq_buttons = []
         self.duty_buttons = []
 
-        for f in freqs:
-            button = tk.Button(freq_frame,
-                        text=f,
-                        command=lambda arg=f: self.set_freq(arg),
-                        anchor=tk.E,
-                        bg = "lightblue",
-                        activebackground="lightblue",
-                        padx=5,
-                    )
-
-            button.pack(pady=1, fill=tk.X)
-            self.freq_buttons.append(button)
-
-
+        i = 0
         for d in duties:
             button = tk.Button(duty_frame,
                         text=f'{d}%',
@@ -297,7 +285,32 @@ class Func_CLK_OUT_frame(tk.Frame):
                     )
 
             self.duty_buttons.append(button)
-            button.pack(pady=1, fill=tk.X)
+            #button.pack(pady=1, fill=tk.X)
+            button.grid(
+                row=int(i/2)%2,
+                column=i%2,
+                sticky=tk.EW,
+                padx=3,
+                pady=3,
+                ipadx=3,
+                )
+
+            i = i + 1
+
+
+        for f in freqs:
+            button = tk.Button(freq_frame,
+                        text=f,
+                        command=lambda arg=f: self.set_freq(arg),
+                        anchor=tk.E,
+                        bg = "lightblue",
+                        activebackground="lightblue",
+                        padx=5
+                    )
+
+            button.pack(ipadx=5, pady=1, fill=tk.X)
+            self.freq_buttons.append(button)
+
 
         # Update buttons when some parameter changes
         self.freq.trace("w", self.update_freq_buttons)
@@ -327,7 +340,7 @@ class Func_CLK_OUT_frame(tk.Frame):
                 btn['bg'] = "cyan2"
                 btn['activebackground'] = "cyan2"
             else:
-                btn['relief'] = "raised"
+                btn['relief'] = "groove"
                 btn['bg'] = "lightblue"
                 btn['activebackground'] = "lightblue"
 
@@ -341,7 +354,7 @@ class Func_CLK_OUT_frame(tk.Frame):
                 btn['bg'] = "cyan2"
                 btn['activebackground'] = "cyan2"
             else:
-                btn['relief'] = "raised"
+                btn['relief'] = "groove"
                 btn['bg'] = "lightblue"
                 btn['activebackground'] = "lightblue"
 
@@ -432,7 +445,7 @@ class Func_IOC_frame(tk.Frame):
             self.pos_button['bg'] = "cyan2"
             self.pos_button['activebackground'] = "cyan2"
         else:
-            self.pos_button['relief'] = "raised"
+            self.pos_button['relief'] = "groove"
             self.pos_button['bg'] = "lightblue"
             self.pos_button['activebackground'] = "lightblue"
 
@@ -441,7 +454,7 @@ class Func_IOC_frame(tk.Frame):
             self.neg_button['bg'] = "cyan2"
             self.neg_button['activebackground'] = "cyan2"
         else:
-            self.neg_button['relief'] = "raised"
+            self.neg_button['relief'] = "groove"
             self.neg_button['bg'] = "lightblue"
             self.neg_button['activebackground'] = "lightblue"
 

@@ -12,10 +12,6 @@ if __name__ == "__main__":
                         const=True, default=False,
                         help='Set loglevel to debug. (default: warning)')
 
-    parser.add_argument('--highdpi', dest='highdpi', action='store_const',
-                    const=True, default=False,
-                    help='Solve blurry fonts on High DPI systems.')
-
     args = parser.parse_args()
 
     if args.debug:
@@ -25,13 +21,13 @@ if __name__ == "__main__":
 
     logger = logging.getLogger(__name__)
 
+
+    try:
+        from ctypes import windll
+        windll.shcore.SetProcessDpiAwareness(1)
+    except:
+        pass
+
+
     app = App()
-
-    if args.highdpi:
-        try:
-            from ctypes import windll
-            windll.shcore.SetProcessDpiAwareness(1)
-        except:
-            pass
-
     app.mainloop()

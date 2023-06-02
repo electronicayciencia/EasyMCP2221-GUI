@@ -113,19 +113,19 @@ class App(tk.Tk):
         topframe.grid(row=0, column=0, columnspan=4, **gridding)
 
         self.device_frame = Device_frame(topframe, self.sts)
-        self.device_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=5, pady=5)
+        self.device_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=5, pady=0)
 
         self.control_frame = Control_frame(topframe, self.sts, self.mcp)
-        self.control_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=False, padx=5, pady=5)
+        self.control_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=False, padx=5, pady=0)
 
         buttons_frame = ttk.Frame(topframe)
-        buttons_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=5, pady=(10, 5))
+        buttons_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=False, padx=5, pady=(10, 5))
 
         # Populate buttons frame
         options = {
             "padx": 5,
             "pady": 5,
-            "ipadx": 20,
+            "ipadx": 10,
             "ipady": 5,
             "expand": True,
             "fill": tk.BOTH,

@@ -29,12 +29,6 @@ To hide console, double click on `EasyMCP2221-workbench.pyw` or use:
     sudo apt-get install python3-tk
     pip install -r requirements.txt
 
-## High DPI
-
-To solve blurry fonts on high DPI screens (at the expense of tiny characters) use:
-
-    EasyMCP2221-workbench.exe --highdpi
-
 
 ## Misc
 
