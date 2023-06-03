@@ -44,7 +44,7 @@ On ubuntu, Tkinter library cannot be installed by `pip`. It needs to be installe
 
 The main window has 2 sections: the top frame and the bottom frames.
 
-![screenshot](screenshots/main_window.png | width=600)
+<img src="screenshots/main_window.png" width="738">
 
 ### Top frame
 
