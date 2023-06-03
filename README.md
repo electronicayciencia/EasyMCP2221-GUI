@@ -44,7 +44,7 @@ On ubuntu, Tkinter library cannot be installed by `pip`. It needs to be installe
 
 The main window has 2 sections: the top frame and the bottom frames.
 
-<img src="screenshots/main_window.png" width="738">
+![screenshot](screenshots/main_window.png)
 
 ### Top frame
 
@@ -70,7 +70,7 @@ The buttons are red when the output is logic 0 and green otherwise.
 
 **Toggle** button toggle the output status.
 
-**Push** button changes the output while it is held down..
+**Push** button changes the output while it is held down.
 
 #### GPIO input
 
