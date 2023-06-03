@@ -42,15 +42,15 @@ On ubuntu, Tkinter library cannot be installed by `pip`. It needs to be installe
 
 ### Main window
 
-![alt text](screenshots/main_window.png)
-
 The main window has 2 sections: the top frame and the bottom frames.
+
+![screenshot](screenshots/main_window.png | width=600)
 
 ### Top frame
 
-![alt text](screenshots/top_frame.png)
-
 The top frame shows device strings. And allow to configure some chip settings. Like ADC and DAC references.
+
+![screenshot](screenshots/top_frame.png)
 
 - The **quit** button terminates the application.
 - **Reset** resets the device and reload stored configuration.
@@ -58,15 +58,15 @@ The top frame shows device strings. And allow to configure some chip settings. L
 
 ### GP function frame
 
-![alt text](screenshots/gp_func.png)
-
 Select the designated function for each of the four GP ports.
+
+![screenshot](screenshots/gp_func.png)
 
 #### GPIO Output
 
-![alt text](screenshots/gp_gpio_out.png)
-
 The buttons are red when the output is logic 0 and green otherwise.
+
+![screenshot](screenshots/gp_gpio_out.png)
 
 **Toggle** button toggle the output status.
 
@@ -74,37 +74,38 @@ The buttons are red when the output is logic 0 and green otherwise.
 
 #### GPIO input
 
-![alt text](screenshots/gp_gpio_in.png)
-
 The label is red when the output is logic 0 and green otherwise.
+
+![screenshot](screenshots/gp_gpio_in.png)
 
 #### ADC and DAC
 
-![alt text](screenshots/gp_adc.png)
-
 MCP2221 has three channel ADC.
 
-![alt text](screenshots/vrefs.png)
+![screenshot](screenshots/gp_adc.png)
 
 When the reference is VDD, the value is shown as a percentage of the VDD. *VDD (5V)* and *VDD (3.3V)* virtual references are provided for easy reading when the device is powered with 5V or 3.3V supply.
 
-![alt text](screenshots/gp_dac.png)
+![screenshot](screenshots/vrefs.png)
 
 MCP2221 has only one DAC.
 
-#### Clock output
+![screenshot](screenshots/gp_dac.png)
 
-![alt text](screenshots/gp_clk_out.png)
+
+#### Clock output
 
 Frequency and duty cycle can be chosen from a set of predefined values.
 
+![screenshot](screenshots/gp_clk_out.png)
+
 #### Interrupt on change
 
-![alt text](screenshots/gp_ioc.png)
+![screenshot](screenshots/gp_ioc.png)
 
 #### I2C scan
 
-![alt text](screenshots/i2c_scan.png)
+![screenshot](screenshots/i2c_scan.png)
 
 
 ## Compilation
