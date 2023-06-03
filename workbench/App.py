@@ -29,6 +29,7 @@ class App(tk.Tk):
             "strings" : {
                 "description": tk.StringVar(self, "Not connected"),
                 "serial":      tk.StringVar(self, "-"),
+                "factserial":  tk.StringVar(self, "-"),
                 "vendor":      tk.StringVar(self, "-"),
             },
             "dac_ref": tk.StringVar(self, "OFF"),
@@ -125,15 +126,15 @@ class App(tk.Tk):
         options = {
             "padx": 5,
             "pady": 5,
-            "ipadx": 10,
+            "ipadx": 0,
             "ipady": 5,
             "expand": True,
             "fill": tk.BOTH,
         }
 
-        tk.Button(buttons_frame, text="Quit",     command=self.quit_click).pack(**options)
-        tk.Button(buttons_frame, text="Reset",    command=self.reset_click).pack(**options)
-        tk.Button(buttons_frame, text="I2C Scan", command=self.i2cscan_click).pack(**options)
+        ttk.Button(buttons_frame, text="Quit",     command=self.quit_click).pack(**options)
+        ttk.Button(buttons_frame, text="Reset",    command=self.reset_click).pack(**options)
+        ttk.Button(buttons_frame, text="I2C Scan", command=self.i2cscan_click).pack(**options)
 
         # GPIO frames
         self.gp_frame = []
@@ -221,8 +222,9 @@ class App(tk.Tk):
         device_flash = self.mcp.read_flash_info()
 
         self.sts["strings"]["description"].set(device_flash["USB_PRODUCT"])
-        self.sts["strings"]["serial"].set("Serial: %s" % device_flash["USB_SERIAL"])
-        self.sts["strings"]["vendor"].set(device_flash["USB_VENDOR"])
+        self.sts["strings"]["serial"].set("USB serial: %s" % device_flash["USB_SERIAL"])
+        self.sts["strings"]["factserial"].set("Factory serial: %s" % device_flash["USB_FACT_SERIAL"])
+        self.sts["strings"]["vendor"].set("Manufacturer: %s" % device_flash["USB_VENDOR"])
 
         self.sts["func"][0].set(device_flash["GP_SETTINGS"]["GP0"]["func"])
         self.sts["func"][1].set(device_flash["GP_SETTINGS"]["GP1"]["func"])

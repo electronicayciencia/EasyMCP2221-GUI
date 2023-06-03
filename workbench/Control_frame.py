@@ -47,7 +47,7 @@ class Control_frame(ttk.Labelframe):
                         onvalue='enabled',
                         offvalue='disabled').grid(row=2, column=0, sticky=tk.W, columnspan=2, pady=5, padx=10, ipadx=20)
 
-        tk.Button(self,
+        ttk.Button(self,
                   text="Save current configuration",
                   command=self.save_click).grid(row=3, column=0, columnspan=2, pady=5, padx=10, sticky=tk.EW)
 
