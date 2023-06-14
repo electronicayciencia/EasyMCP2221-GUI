@@ -101,7 +101,7 @@ class Func_ADC_frame(tk.Frame):
             fg="firebrick1",
             bg="gray10",
             anchor="center",
-            font=("", 16),
+            font=("", 20),
             #font=('Lucida Console', 16),
         )
 
@@ -182,7 +182,7 @@ class Func_DAC_frame(tk.Frame):
             fg="black",
             bg="yellow2",
             anchor="center",
-            font=("", 16),
+            font=("", 20),
         )
 
         self.label.pack(fill=tk.X, ipady=5, pady=10, padx=10)

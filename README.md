@@ -103,7 +103,7 @@ Frequency and duty cycle can be chosen from a set of predefined values.
 
 ![screenshot](screenshots/gp_ioc.png)
 
-#### I2C scan
+### I2C scan
 
 ![screenshot](screenshots/i2c_scan.png)
 

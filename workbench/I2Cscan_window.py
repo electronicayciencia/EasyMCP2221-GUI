@@ -73,6 +73,8 @@ class I2Cscan_window(tk.Toplevel):
 
 
     def scan(self):
+        self.mcp.I2C_speed(100_000)
+
         for i in range(0, 0x80):
             self.addr.set(i)
             try:
